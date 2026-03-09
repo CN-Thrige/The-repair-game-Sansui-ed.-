@@ -1,0 +1,406 @@
+#import library random
+import random
+
+
+#variables for health.
+player_health = 100
+decrease_health = 5
+def health():
+    global player_health
+    #s. 247-248 i starting out with python
+
+    player_health -= decrease_health
+
+    if player_health == 0:
+        #denne if-statement sikker sig at hvis en spiller når 0, så er det game over!
+        print("> GAME OVER")
+        quit()
+
+    return player_health
+
+def player_name():
+    playername = input("> Enter your name: ")
+    return playername
+
+def yes_no_controls():
+    #variables for at sige ja eller nej (yes or no).
+    yes_no = ["yes", "no"]
+    return yes_no
+
+#prolog kalder alle fremtidig funktioner i main(), som er hoved funktion
+def prolog():
+    print(input('> Welcome to the repair game press enter to start:'))
+
+    print("____________________________________prolog____________________________________ ")
+
+    print(input(f'> Hallo {player_name()}. On your way home from work. You found your dream amplifier... '
+                f'the Sansui AU 555a in a plastic bag.'))
+
+    #while not loop....
+    response = ""
+    while response not in yes_no_controls():
+        response = input("> Do you pick it up? (Enter yes or no)\t")
+        #delay time...
+
+        if response == "yes":
+            print(input("> You kneel down. carefully open op the bag and see a prestigne Sansui AU 555a."))
+            chapter_1()
+
+        elif response == "no":
+            print(input("> You take a quick look and think what if it is broken?"))
+            print(input("> GAME OVER. "))
+            quit()
+
+        else:
+            print("> I didn't understand that. ")
+            print(f'> You lost five lives and now you have:  {health()} ')
+
+def controls():
+    #Variables for actions, altså spillerens valg muligheder!
+    #Det er en liste
+    actions = ["lift", "screw", "unscrew", "solder", "unsolder", "wipe down", "inspect", "multimeter"]
+    return actions
+
+def chapter_1():
+    response = ""
+    while response not in controls():
+        print("____________________________________Chapter 1____________________________________ ")
+        print(input("> You close the bag quickly."))
+
+        response = input("> What actions do you take?"
+                         "> lift/screw/unscrew/solder/unsolder/wipe down/inspect/multimeter: ")
+
+        if response == "lift":
+            print(input("You lift up the Sansui AU 555a and bring it home as fast as you can."))
+            chapter_2()
+
+        elif response  == "screw":
+            print(input("> You don't have a screwdriver on you..."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            print(input("> Try again..."))
+            chapter_1()
+
+        elif response == "unscrew":
+            print(input("> You don't have a screwdriver on you..."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            print(input("> Try again..."))
+            chapter_1()
+
+        elif response  == "solder":
+            print(input("> You don't have a soldering iron on you..."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            print(input("> Try again..."))
+            chapter_1()
+
+        elif response  == "unsolder":
+            print(input("> You don't have a soldering iron on you..."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            print(input("> Try again..."))
+            chapter_1()
+
+        elif response  == "wipe down":
+            print(input("> You try to wipe the sansui and scratch it..."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            print(input("> Try again..."))
+            chapter_1()
+
+        elif response == "inspect":
+            print(input("> You are in awe of the beauty of the Sansui AU 555a..."))
+            print(input("> You don't here the landlord storming out of the building... "))
+            print(input("> ... he yells at you and chase you away."))
+            print(input("> GAME OVER. "))
+            quit()
+
+        elif response  == "multimeter":
+            print(input("> You don't have a multimeter on you..."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            print(input("> Try again..."))
+            chapter_1()
+
+        else:
+            print("> I didn't understand that.\n ")
+            print(f'> You lost five lives and now you have:  {health()} ')
+
+def chapter_2():
+    print("____________________________________Chapter 2____________________________________ ")
+
+    print(input("> You finally get home. You are excited. "))
+
+    print(input('> You place your Sansui AU 555a in the entrance and pick up all of your tools.'))
+
+    print(input('> You plug it in...'))
+
+    print(f'> You hear a loud pop.  You lost five lives and now you have:  {health()} ')
+
+    #while loop!
+    response = ""
+    while response not in yes_no_controls():
+        response = input("> Can you fix it? (Enter yes or no)\t")
+
+        if response == "yes":
+            print(input("> You quickly unplug the Sansui AU 555a "))
+            chapter_3()
+
+        elif response == "no":
+            print(input("> You are not sure if you want to repair it..."))
+            print(input("> GAME OVER. "))
+            quit()
+
+        else:
+            print("> I didn't understand that. ")
+            print(f'> You lost five lives and now you have:  {health()} ')
+
+def chapter_3():
+    response = ""
+    while response not in controls():
+        print("____________________________________Chapter 3____________________________________ ")
+
+        print(input("> You want to repair the Sansui AU 555a. "))
+
+        response = input("> What actions do you take?\n"
+                         "> lift/screw/unscrew/solder/unsolder/wipe down/inspect/multimeter: ")
+
+        if response == "lift":
+            print(input("> You try to rip of the lit without luck. "))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            chapter_4()
+
+        elif response == "screw":
+            print(input("> You overtighten the screws..."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            chapter_4()
+
+        elif response == "unscrew":
+            print(input("> You succesfully unscrew the lit of the Sansui AU 555a. "))
+            chapter_4()
+
+        elif response == "solder":
+            print(input('> in your panic you greb the soldering iron instead of the screwdriver. '))
+            print(input("> GAME OVER. "))
+            quit()
+
+        elif response == "unsolder":
+            print(input("> You greb the soldering iron and pause, and release how dumb it is. "))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            chapter_4()
+
+        elif response == "wipe down":
+            print(input("> You clean the outsite of the Sansui au 555a. "))
+            chapter_4()
+
+        elif response == "inspect":
+            print(input("> You inspect the outsides of the Sansui au 555a."))
+            print(input("> ... but that doesnt open the lit..."))
+            chapter_4()
+
+        elif response == "multimeter":
+            print(input("> You try to use the multimeter as a screwdriver... and fail and brake it...."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            chapter_4()
+
+        else:
+            print("> I didn't understand that.\n ")
+            print(f'> You lost five lives and now you have:  {health()} ')
+
+#fra kapitel 4 og frem splitter spillet op i svær og nem!
+def roll_dice():
+    return random.randint(1, 6)
+
+def chapter_4():
+    roll= roll_dice()
+
+    response = "" #lokal variable!
+    while response not in controls():
+        print("____________________________________Chapter 4____________________________________ ")
+
+        print(input("> You take the Sansui AU 555a's lit off."))
+
+        response = input("> What actions do you take?\n"
+                         "> lift/screw/unscrew/solder/unsolder/wipe down/inspect/multimeter: ")
+
+        if response == "inspect":
+            print(input("> You inspect the insides of the Sansui AU 555a, look for what coursed the damage"))
+
+            if roll == 1:
+                print(input("> It was only the 2A (F001) fuse that blew up"))
+                print(f'> You lost five lives and now you have:  {health()} ')
+                chapter_5_fuse()
+
+            elif roll == 2:
+                print(input("> Ahhhh pheeew, only resistor R601 (2.2K Ω) blew up!"))
+                print(f'> You lost five lives and now you have:  {health()} ')
+                chapter_5_resistor()
+
+            elif roll == 3:
+                # minor issues, nothing crical...
+                print(input("> The following resistors: R709 (330K Ω), R701 (1K Ω), R717 (10K Ω) blew up!"))
+                print(f'> You lost five lives and now you have:  {health()} ')
+                chapter_5_resistor()
+
+            elif roll == 4:
+                print(input("> The following resistors: R861 (470(2)) for the head phone jack blew up!"))
+                print(f'> You lost five lives and now you have:  {health()} ')
+                chapter_5_resistor()
+
+            elif roll == 5:
+                print(input("> The following resistors: R861 (470(2)) for the head phone jack blew up!"))
+                print(f'> You lost five lives and now you have:  {health()} ')
+                chapter_5_resistor()
+
+            elif roll == 6:
+                # huge issues, 6 is complete game over
+                print('> The entire PCB blew up! ')
+                print(input("> GAME OVER. "))
+                quit()
+
+        elif response == "lift":
+            print(input("> Try again..."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            chapter_4()
+
+        elif response == "screw":
+            print(input("> Try again..."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            chapter_4()
+
+        elif response == "unscrew":
+            print(input("> Try again..."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            chapter_4()
+
+        elif response == "solder":
+            print(input("> Try again..."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            chapter_4()
+
+        elif response == "unsolder":
+            print(input("> Try again..."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            chapter_4()
+
+        elif response == "wipe down":
+            print(input("Try again..."))
+            print(f'You lost five lives and now you have:  {health()} ')
+            chapter_4()
+
+        elif response == "multimeter":
+            print(input("> Try again..."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            chapter_4()
+
+        else:
+            print("> I didn't understand that.\n ")
+            print(f'> You lost five lives and now you have:  {health()} ')
+
+#den nemme del af spillet
+def chapter_5_fuse():
+        print("____________________________________Chapter 5: fuse____________________________________ ")
+
+        print(input("> You release what happened was just dust and not smoke!"))
+        print(input("> You took of the lit for nothing..."))
+        print(f'> You lost five lives and now you have:  {health()} ')
+        print(input("> You took of the lit for nothing..."))
+        chapter_6_fuse()
+
+#den svære del af spillet.
+def chapter_5_resistor():
+    response = ""
+    while response not in controls():
+        print("____________________________________Chapter 5: resistor part 1____________________________________ ")
+        print(input("> You want to remove the old resistors, that blew up"))
+
+        response = input("> What actions do you take?"
+                         "> lift/screw/unscrew/solder/unsolder/wipe down/inspect/multimeter: ")
+
+        if response == "lift":
+            print(input("> You try to lift out the resistors without first unsoldering it...."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            print(input("> What were you thinking?"))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            print(input("> Try again..."))
+            chapter_5_resistor()
+
+        elif response == "screw":
+            print(input("> You try to rip out the resistor with screw driver..."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            print(input("> You scratch and damage the PCB..."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            print(input("> Try again..."))
+            chapter_5_resistor()
+
+        elif response == "unscrew":
+            print(input("> You try to unscrew the resistor with screw driver..."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            print(input("> ... w-why?"))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            print(input("> Try again..."))
+            chapter_5_resistor()
+
+        elif response == "solder":
+            print(input("> You try to solder on new resistors before removing the old resistors..."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            print(input("> You melt the PCB..."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            print(input("> Try again..."))
+            chapter_5_resistor()
+
+        elif response == "unsolder":
+            print(input("> You Succesfully  unsolder the resistors."))
+            print(input("> But you were not careful and scratch the PCB"))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            chapter_6_resistor()
+
+        elif response == "wipe down":
+            print(input("> You try to clean the old resistors..."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            print(input("> ... but that does not fix the blown up resistors..."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            print(input("> Try again..."))
+            chapter_5_resistor()
+
+        elif response == "inspect":
+            print(input("> You try to inspect the resistors again..."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            print(input("> ... but as before. The damage is still there."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            print(input("> Try again..."))
+            chapter_5_resistor()
+
+        elif response == "multimeter":
+            print(input("> You start checking the resistors with the multimeter first."))
+            print(input("> Afterwards. You carefully unsolder the resistors."))
+            print(f'> You lost five lives and now you have:  {health()} ')
+            chapter_6_resistor()
+
+        else:
+            print("> I didn't understand that.\n ")
+            print(f'> You lost five lives and now you have:  {health()} ')
+
+def chapter_6_resistor():
+    response = ""
+    while response not in controls():
+        print("____________________________________Chapter 6: resistor part 2____________________________________ ")
+
+        print(input("..."))
+
+        response = input("> What actions do you take?"
+                         "> lift/screw/unscrew/solder/unsolder/wipe down/inspect/multimeter: ")
+
+def chapter_6_fuse():
+    print("____________________________________Chapter 6: fuse part 2____________________________________ ")
+
+    print(input("You put on the lid and replace the fuse."))
+    print(f'> You lost five lives and now you have:  {health()} ')
+    print(input("YOU WON!"))
+    quit()
+
+#hoved funktionen:
+def main():
+    main_game = 'y'
+    while main_game == 'y':
+        prolog()
+        main_game = input('> (press y to continue or n to stop):\t')
+
+#kalder hele spillet!
+main()
+
